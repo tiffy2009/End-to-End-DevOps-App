@@ -1,0 +1,58 @@
+name: 'Terraform'
+
+on:
+  workflow_dispatch:
+    inputs:
+      tfvars_file:
+        description: 'Path to the .tfvars file'
+        required: true
+        default: 'dev.auto.tfvars'
+      action:
+        type: choice
+        description: 'Apply or Destroy'
+        options:
+        - plan
+        - apply
+        - destroy
+        required: true
+        default: 'apply'
+
+env:
+  AWS_REGION: us-east-1
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+permissions:
+  contents: read
+
+jobs:
+  Terraform-Workflow:
+    runs-on: ubuntu-latest
+    environment: dev
+    defaults:
+      run:
+        shell: bash
+        working-directory: jenkins
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.8.4
+
+    - name: Terraform Init and Validate
+      run: |
+        terraform init
+        terraform fmt
+        terraform validate
+
+    - name: Terraform Plan
+      if: ${{ github.event.inputs.action  == 'plan' }}
+      run: terraform plan -var-file=${{ github.event.inputs.tfvars_file }} -input=false
+
+    - name: Terraform Apply or Destroy
+      if: ${{ github.event.inputs.action == 'apply' || github.event.inputs.action == 'destroy' }}
+      run: terraform ${{ github.event.inputs.action }} -auto-approve -var-file=${{ github.event.inputs.tfvars_file }} -input=false
