@@ -14,5 +14,5 @@ variable "vpc-cidr-block" {}
 variable "pub-sub-cidr" {}
 variable "az" {}
 variable "region" {}
-variable "access_key" {}
-variable "secret_key" {}
+# variable "access_key" {}
+# variable "secret_key" {}
