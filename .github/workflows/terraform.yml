@@ -32,7 +32,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: jenkins
+        working-directory: ./Terraform-aws/jenkins-git_action"
 
     steps:
     - name: Checkout
