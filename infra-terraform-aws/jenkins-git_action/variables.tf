@@ -10,7 +10,6 @@ variable "instance-type" {}
 variable "ami" {}
 variable "cidr-block" {}
 variable "vpc-cidr" {}
-variable "vpc-cidr-block" {}
 variable "pub-sub-cidr" {}
 variable "az" {}
 variable "region" {}
