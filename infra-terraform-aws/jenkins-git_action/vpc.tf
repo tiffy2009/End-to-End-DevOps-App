@@ -28,7 +28,7 @@ resource "aws_subnet" "public-subnet" {
 resource "aws_route_table" "rt" {
   vpc_id = aws_vpc.vpc.id
   route {
-    cidr_block = var.vpc-cidr-block
+    cidr_block = var.cidr-block
     gateway_id = aws_internet_gateway.igw.id
   }
 
