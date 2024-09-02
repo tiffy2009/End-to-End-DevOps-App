@@ -1,11 +1,11 @@
 terraform {
-  # backend "s3" {
-  #   bucket         = "my-ews-baket1"
-  #   region         = "us-east-1"
-  #   key            = "End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jenkins-Server-TF/terraform.tfstate"
-  #   dynamodb_table = "Lock-Files"
-  #   encrypt        = true
-  # }
+  backend "s3" {
+    bucket         = "my-terraform-remote-backend-s3"
+    region         = "us-east-1"
+    key            = "mean-stack-application/dev/eks-terraform/terraform.tfstate"
+    dynamodb_table = "jenkins-terraform-lock-file"
+    encrypt        = true
+  }
   required_version = ">= 1.0"
 
   required_providers {
