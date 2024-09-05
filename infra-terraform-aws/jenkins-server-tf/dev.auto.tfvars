@@ -6,5 +6,5 @@
 # instance-name = "Jenkins-server"
 # key-name      = "my-key-pair"
 # iam-role      = "Jenkins-iam-role"
-access_key      = "$AWS_ACCESS_KEY"
-secret_key      = "$AWS_SECRET_KEY"
+access_key = "$AWS_ACCESS_KEY"
+secret_key = "$AWS_SECRET_KEY"

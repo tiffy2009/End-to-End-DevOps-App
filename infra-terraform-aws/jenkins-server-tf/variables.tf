@@ -36,5 +36,5 @@
 # variable "instance-name" {}
 # variable "key-name" {}
 # variable "iam-role" {}
-variable "access_key" {}
-variable "secret_key" {}
+  variable "access_key" {}
+  variable "secret_key" {}

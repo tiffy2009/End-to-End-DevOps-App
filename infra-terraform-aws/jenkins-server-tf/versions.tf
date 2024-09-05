@@ -1,11 +1,11 @@
 terraform {
-  backend "s3" {
-    bucket         = "my-terraform-remote-backend-s3"
-    region         = "us-east-1"
-    key            = "mean-stack-application/dev/eks-terraform/terraform.tfstate"
-    dynamodb_table = "jenkins-terraform-lock-file"
-    encrypt        = true
-  }
+  # backend "s3" {
+  #   bucket         = "my-terraform-remote-backend-s3"
+  #   region         = "us-east-1"
+  #   key            = "mean-stack-application/dev/eks-terraform/terraform.tfstate"
+  #   dynamodb_table = "jenkins-terraform-lock-file"
+  #   encrypt        = true
+  # }
   required_version = ">= 1.0"
 
   required_providers {
@@ -18,7 +18,7 @@ terraform {
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = var.access_key
-  secret_key = var.secret_key
+  # access_key = ""
+  # secret_key = ""
 }
 

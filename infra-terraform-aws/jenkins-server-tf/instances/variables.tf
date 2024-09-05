@@ -37,7 +37,7 @@ variable "instance_name" {
 variable "key_pair" {
   description = "Amazon ec2 key pair"
   type = string
-  default = "my-key-pair"
+  default = "terraform_key"
 }
 
 variable "security_group" {
